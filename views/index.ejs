@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var socket = io.connect();
+			
+			socket.on('init', function(data) {
+				console.log(data);
+			});
+		</script>
+		<h1><%= title %></h1>
+		<p>Welcome to <%= title %></p>
+	</body>
+</html>

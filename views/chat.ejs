@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<!--<link rel="shortcut icon" href="">-->
+		
+		<title>Snippet Chat</title>
+		
+		<!-- Bootstrap core CSS -->
+		<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+		
+		<!-- Custom styles for this template -->
+		<link href="/stylesheets/chat.css" rel="stylesheet">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+		<![endif]-->
+		
+		<script src="/javascripts/jquery-1.10.2.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+	</head>
+
+	<body style="">
+	
+		<div class="container">
+			<input type="hidden" id="userId" value="<%= userId %>">
+			<input type="hidden" id="username" value="<%= username %>">
+			
+			<div class="row row-offcanvas row-offcanvas-right">
+				<div class="col-xs-12 col-sm-9">
+					<div class="row row-chat">
+						<!--
+						<div class="col-6 col-sm-6 col-lg-4">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title">David</h3>
+								</div>
+								<div class="panel-body">
+									<div class="chat-body">
+										<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+									</div>
+									<div class="chat-msg">
+										<textarea style="width:70%; height:50px; resize:none;"></textarea>
+										<button class="btn btn-primary btn-send-msg">Send</button>
+									</div>
+								</div>
+							</div>
+						</div><!--/span-->
+					</div><!--/row-->
+				</div><!--/span-->
+		  
+				<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+					<div class="list-group list-group-users">
+						<% users.forEach(function(user) { %>
+							<a href="#" userId="<%= user.user_id %>" active="false" class="list-group-item list-users">
+								<h4><%= user.username %></h4>
+								<span class="onlineStatus">
+									<% if (user.socket_id !== '0') { %>
+										<p style="color:green;font-weight:bold;">Online</p>
+									<% }else { %>
+										<p style="color:red;font-weight:bold;">Offline</p>
+									<% } %>
+								</span>
+							</a>
+						<% }) %>
+					</div>
+				</div><!--/span-->
+			</div><!--/row-->
+		</div><!--/.container-->
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="/javascripts/bootstrap.min.js"></script>
+		<script src="/javascripts/chat.js"></script>
+	</body>
+</html>
